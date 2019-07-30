@@ -1,0 +1,39 @@
+﻿{
+  "rolloutMetadata": {
+    "serviceModelPath": "ServiceModel.json",
+    "name": "Contoso WebApp 1.0.1",
+    "rolloutType": "Major",
+    "buildSource": {
+      "parameters": {
+        "versionFile": "buildver.txt"
+      }
+    },
+    "notification": {
+      "email": {
+        "to": "__EMAIL__"
+      }
+    }
+  },
+  "orchestratedsteps": [
+    {
+      "name": "West Region",
+      "targetType": "ServiceResource",
+      "targetName": "ContosoWebAppWestUS",
+      "actions": [
+        "Deploy",
+        "Wait/wait3Minutes"
+      ]
+    },
+    {
+      "name": "East Region",
+      "targetType": "ServiceResource",
+      "targetName": "ContosoWebAppEastUS",
+      "actions": [
+        "Deploy"
+      ],
+      "dependsOn": [
+        "West Region"
+      ]
+    }
+  ]
+}
