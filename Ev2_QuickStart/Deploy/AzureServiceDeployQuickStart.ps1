@@ -20,12 +20,9 @@ param (
 $global:rolloutSpecRelPath= ".\ServiceGroupRoot\RolloutSpec.json"
 $global:serviceModelRelPath= ".\ServiceGroupRoot\ServiceModel.json"
 
-$global:parametersEUSPath = ".\ServiceGroupRoot\Parameters\WebApp.EastUS.Parameters.json" 
-$global:parametersWUSPath = ".\ServiceGroupRoot\Parameters\WebApp.WestUS.Parameters.json"
+$global:parametersPath = ".\ServiceGroupRoot\Parameters\WebApp.Parameters.json"
 $global:templatePath = ".\ServiceGroupRoot\Templates\WebApp.Template.json" 
 $global:appPackageRelativePath = ".\ServiceGroupRoot\bin\WebApp.zip"
-$global:westUSLocation = "West US"
-$global:eastUSLocation = "East US"
 
 $global:escapePattern = '[^a-z0-9 ]'
 
@@ -110,8 +107,7 @@ function Replace-ParametersPlaceHolders
     $webAppResourcePrefix = $webAppResourcePrefix -replace $global:escapePattern
     $webAppReplacementSymbol = "__WEBAPP_PREFIX__"
 
-    Replace-String $webAppReplacementSymbol $webAppResourcePrefix $global:parametersEUSPath
-    Replace-String $webAppReplacementSymbol $webAppResourcePrefix $global:parametersWUSPath
+    Replace-String $webAppReplacementSymbol $webAppResourcePrefix $global:parametersPath
 }
 
 <#
