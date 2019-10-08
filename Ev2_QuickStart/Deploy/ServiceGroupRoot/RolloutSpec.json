@@ -1,6 +1,7 @@
 ﻿{
   "rolloutMetadata": {
     "serviceModelPath": "ServiceModel.json",
+	"scopeBindingsPath": "ScopeBindings.json",
     "name": "Contoso WebApp 1.0.1",
     "rolloutType": "Major",
     "buildSource": {
