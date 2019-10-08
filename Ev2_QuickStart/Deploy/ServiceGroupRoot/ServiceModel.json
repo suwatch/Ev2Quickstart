@@ -1,46 +1,65 @@
-{
-    "serviceMetadata": {
-        "serviceGroup": "Contoso-MktPlace",
-        "environment": "Test"
-    },
-    "serviceResourceGroupDefinitions": [
+﻿{
+  "serviceMetadata": {
+    "serviceGroup": "Contoso-MktPlace",
+    "environment": "Test"
+  },
+  "serviceResourceGroupDefinitions": [
+  {
+    "name": "ContosoAppGroup",
+    "serviceResourceDefinitions": [
+    {
+      "name": "ContosoWebApp",
+      "composedOf": 
+      {
+        "arm": 
         {
-            "name": "ContosoAppGroup",
-            "serviceResourceDefinitions": [
-                {
-                    "name": "ContosoWebApp",
-                    "armTemplatePath": "Templates\\WebApp.Template.json"
-                }
-            ]
-        }
-    ],
-    "serviceResourceGroups": [
-        {
-            "azureResourceGroupName": "__RESOURCE_GROUP_PREFIX__ContosoWest",
-            "location": "West US",
-            "instanceOf": "ContosoAppGroup",
-            "azureSubscriptionId": "__SUBSCRIPTION_ID__",
-            "serviceResources": [
-                {
-                    "name": "ContosoWebAppWestUS",
-                    "instanceOf": "ContosoWebApp",
-                    "armParametersPath": "Parameters\\WebApp.WestUS.Parameters.json",
-                    "rolloutParametersPath": "Parameters\\WebApp.WestUS.RolloutParameters.json"
-                }
-            ]
+          "templatePath": "Templates\\WebApp.Template.json",
+          "parametersPath": "Parameters\\WebApp.Parameters.json"
         },
+        "extension": 
         {
-            "azureResourceGroupName": "__RESOURCE_GROUP_PREFIX__ContosoEast",
-            "location": "East US",
-            "instanceOf": "ContosoAppGroup",
-            "azureSubscriptionId": "__SUBSCRIPTION_ID__",
-            "serviceResources": [
-                {
-                    "name": "ContosoWebAppEastUS",
-                    "instanceOf": "ContosoWebApp",
-                    "armParametersPath": "Parameters\\WebApp.EastUS.Parameters.json"
-                }
-            ]
+          "rolloutParametersPath": "Parameters\\WebApp.RolloutParameters.json"
         }
-    ]
+      }
+    }]
+  }],
+  "serviceResourceGroups": [
+  {
+    "azureResourceGroupName": "__RESOURCE_GROUP_PREFIX__ContosoWest",
+    "location": "West US",
+    "instanceOf": "ContosoAppGroup",
+    "azureSubscriptionId": "__SUBSCRIPTION_ID__",
+    "scopeTags": [
+    {
+      "name": "MyAppCompute"
+    }],
+    "serviceResources": [
+    {
+      "name": "ContosoWebAppWestUS",
+      "instanceOf": "ContosoWebApp",
+      "scopeTags": [
+      {
+        "name": "WestUSRegion"
+      }]
+    }]
+  },
+  {
+    "azureResourceGroupName": "__RESOURCE_GROUP_PREFIX__ContosoEast",
+    "location": "East US",
+    "instanceOf": "ContosoAppGroup",
+    "azureSubscriptionId": "__SUBSCRIPTION_ID__",
+    "scopeTags": [
+    {
+      "name": "MyAppCompute"
+    }],
+    "serviceResources": [
+    {
+      "name": "ContosoWebAppEastUS",
+      "instanceOf": "ContosoWebApp",
+      "scopeTags": [
+      {
+        "name": "EastUSRegion"
+      }]
+    }]
+  }]
 }
