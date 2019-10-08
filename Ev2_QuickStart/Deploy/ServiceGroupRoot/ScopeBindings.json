@@ -19,11 +19,11 @@
           "find": "__LOCATION_ABBR__",
           "replaceWith": "wus"
         },
-		{
+		    {
           "find": "__LOCATION__",
           "replaceWith": "West US"
         },
-		{
+		    {
           "find": "__WESTUS_WAIT_TIME__",
           "replaceWith": "PT3M"
         }
@@ -36,7 +36,7 @@
           "find": "__LOCATION_ABBR__",
           "replaceWith": "eus"
         },
-		{
+		    {
           "find": "__LOCATION__",
           "replaceWith": "East US"
         }
