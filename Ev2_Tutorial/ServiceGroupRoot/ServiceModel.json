@@ -1,0 +1,65 @@
+﻿{
+  "serviceMetadata": {
+    "serviceGroup": "Contoso-MktPlace",
+    "environment": "Test"
+  },
+  "serviceResourceGroupDefinitions": [
+  {
+    "name": "ContosoAppGroup",
+    "serviceResourceDefinitions": [
+    {
+      "name": "ContosoWebApp",
+      "composedOf": 
+      {
+        "arm": 
+        {
+          "templatePath": "Templates\\WebApp.Template.json",
+          "parametersPath": "Parameters\\WebApp.Parameters.json"
+        },
+        "extension": 
+        {
+          "rolloutParametersPath": "Parameters\\WebApp.RolloutParameters.json"
+        }
+      }
+    }]
+  }],
+  "serviceResourceGroups": [
+  {
+    "azureResourceGroupName": "__RESOURCE_GROUP_PREFIX__ContosoWest",
+    "location": "West US",
+    "instanceOf": "ContosoAppGroup",
+    "azureSubscriptionId": "__SUBSCRIPTION_ID__",
+    "scopeTags": [
+    {
+      "name": "MyAppCompute"
+    }],
+    "serviceResources": [
+    {
+      "name": "ContosoWebAppWestUS",
+      "instanceOf": "ContosoWebApp",
+      "scopeTags": [
+      {
+        "name": "WestUSRegion"
+      }]
+    }]
+  },
+  {
+    "azureResourceGroupName": "__RESOURCE_GROUP_PREFIX__ContosoEast",
+    "location": "East US",
+    "instanceOf": "ContosoAppGroup",
+    "azureSubscriptionId": "__SUBSCRIPTION_ID__",
+    "scopeTags": [
+    {
+      "name": "MyAppCompute"
+    }],
+    "serviceResources": [
+    {
+      "name": "ContosoWebAppEastUS",
+      "instanceOf": "ContosoWebApp",
+      "scopeTags": [
+      {
+        "name": "EastUSRegion"
+      }]
+    }]
+  }]
+}
