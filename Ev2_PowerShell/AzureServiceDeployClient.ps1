@@ -161,10 +161,10 @@ function InstallLatestVersion($targetPath, $lastestPkg)
     Write-Host "Fetching latest version $latestVStr of $sdkPackageName package"
     
     & $nugetPath install $sdkPackageName -Prerelease -version $latestVStr -o $targetPath -ConfigFile "$azureServiceDeployClientPath\Nuget.config"
-    if (!(Test-Path "$targetPath\Microsoft.IdentityModel.Clients.ActiveDirectory.4.4.2"))
+    if (!(Test-Path "$targetPath\Microsoft.IdentityModel.Clients.ActiveDirectory.5.2.4"))
     {
         Remove-Item -Path "$targetPath\Microsoft.IdentityModel.Clients.ActiveDirectory*" -Force -Recurse -Confirm:$false
-        & $nugetPath install "Microsoft.IdentityModel.Clients.ActiveDirectory" -version "4.4.2" -o $targetPath -ConfigFile "$azureServiceDeployClientPath\Nuget.config"
+        & $nugetPath install "Microsoft.IdentityModel.Clients.ActiveDirectory" -version "5.2.4" -o $targetPath -ConfigFile "$azureServiceDeployClientPath\Nuget.config"
     }
     xcopy "$asdc\lib\*.*" $targetPath /Y /C | Out-Null
     $manifest = "$targetPath\AzureServiceDeployClient.manifest"
