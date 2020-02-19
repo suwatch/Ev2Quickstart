@@ -1,5 +1,5 @@
 {
-  "$schema": "http://schema.express.azure.com/schemas/2015-01-01-alpha/ScopeBindings.json",
+  "$schema": "https://ev2schema.azure.net/schemas/2020-01-01/scopeBindings.json",
   "contentVersion": "0.0.0.1",
 
   "scopeBindings": [

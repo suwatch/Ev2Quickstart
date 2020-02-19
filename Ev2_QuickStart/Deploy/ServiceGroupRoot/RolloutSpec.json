@@ -1,4 +1,5 @@
 ﻿{
+  "$schema": "https://ev2schema.azure.net/schemas/2020-01-01/rolloutSpecification.json",
   "rolloutMetadata": {
     "serviceModelPath": "ServiceModel.json",
 	"scopeBindingsPath": "ScopeBindings.json",
