@@ -1,0 +1,34 @@
+﻿{
+  "$schema": "https://ev2schema.azure.net/schemas/2020-01-01/scopeBindings.json",
+  "contentVersion": "0.0.0.1",
+
+  "scopeBindings": [
+  {
+    "scopeTagName": "MyAppCompute",
+    "bindings": [
+    {
+      "find": "_SAMPLE_SKU_",
+      "replaceWith": "Free"
+    }]
+  },
+  {
+    "scopeTagName": "__LOCATION_ABBR__Region",
+    "bindings": [
+    {
+      "find": "_WEBAPP_NAME_",
+      "replaceWith": "__WEBAPP_NAME__"
+    },
+    {
+      "find": "_LOCATION_ABBR_",
+      "replaceWith": "__LOCATION_ABBR__"
+    },
+    {
+      "find": "_LOCATION_",
+      "replaceWith": "__LOCATION__"
+    },
+    {
+      "find": "_3MINS_WAIT_TIME_",
+      "replaceWith": "PT3M"
+    }]
+  }]
+}

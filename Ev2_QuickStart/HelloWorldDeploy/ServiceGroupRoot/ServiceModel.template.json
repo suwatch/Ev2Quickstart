@@ -1,0 +1,47 @@
+﻿{
+  "$schema": "https://ev2schema.azure.net/schemas/2020-01-01/serviceModel.json",
+  "serviceMetadata": {
+    "serviceGroup": "Contoso-MktPlace",
+    "environment": "Test"
+  },
+  "serviceResourceGroupDefinitions": [
+  {
+    "name": "ContosoAppGroup",
+    "serviceResourceDefinitions": [
+    {
+      "name": "ContosoWebApp",
+      "composedOf": 
+      {
+        "arm": 
+        {
+          "templatePath": "Templates\\WebApp.Template.json",
+          "parametersPath": "Parameters\\WebApp.Parameters.json"
+        },
+        "extension": 
+        {
+          "rolloutParametersPath": "Parameters\\WebApp.RolloutParameters.json"
+        }
+      }
+    }]
+  }],
+  "serviceResourceGroups": [
+  {
+    "azureResourceGroupName": "__RESOURCE_GROUP_NAME__",
+    "location": "__LOCATION_ABBR__",
+    "instanceOf": "ContosoAppGroup",
+    "azureSubscriptionId": "__SUBSCRIPTION_ID__",
+    "scopeTags": [
+    {
+      "name": "MyAppCompute"
+    }],
+    "serviceResources": [
+    {
+      "name": "ContosoWebApp__LOCATION_ABBR__",
+      "instanceOf": "ContosoWebApp",
+      "scopeTags": [
+      {
+        "name": "__LOCATION_ABBR__Region"
+      }]
+    }]
+  }]
+}
